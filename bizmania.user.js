@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         bizmania
-// @namespace    http://tampermonkey.net/
 // @version      2024-03-08
-// @description  try to take over the world!
-// @author       You
+// @description  Расширение возможностей bizmania
+// @author       newTomas
 // @match        https://bizmania.ru/units/shop/?*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bizmania.ru
+// @homepageURL  https://github.com/newTomas/bizmania/
 // @updateURL    https://raw.githubusercontent.com/newTomas/bizmania/main/bizmania.user.js
 // @downloadURL  https://raw.githubusercontent.com/newTomas/bizmania/main/bizmania.user.js
 // @grant        none
