@@ -6,8 +6,8 @@
 // @author       You
 // @match        https://bizmania.ru/units/shop/?*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bizmania.ru
-// @updateURL    https://raw.githubusercontent.com/newTomas/bizmania/main/index.js
-// @downloadURL  https://raw.githubusercontent.com/newTomas/bizmania/main/index.js
+// @updateURL    https://raw.githubusercontent.com/newTomas/bizmania/main/bizmania.user.js
+// @downloadURL  https://raw.githubusercontent.com/newTomas/bizmania/main/bizmania.user.js
 // @grant        none
 // ==/UserScript==
 
