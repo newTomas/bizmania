@@ -95,14 +95,14 @@ function company(){
 (function () {
     'use strict';
 
-    const pathname = window.location.pathname;
+    const pathname = window.location.pathname.split("/").filter(e => e).join("/");
     const searchParams = new URLSearchParams(window.location.search);
     const tab = searchParams.get("tab");
 
-    switch(true){
-        case pathname.startsWith("/person"): person(); break;
-        case pathname.startsWith("/company"): company(); break;
-        case pathname.startsWith("/units/shop"): {
+    switch(pathname){
+        case "person": person(); break;
+        case "company": company(); break;
+        case "units/shop": {
             switch (tab) {
                 case "supply": supply(); break;
                 case "divisions": {
