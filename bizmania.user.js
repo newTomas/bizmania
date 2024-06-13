@@ -3,9 +3,9 @@
 // @version      2024-06-11
 // @description  Расширение возможностей bizmania
 // @author       newTomas
-// @match        https://bizmania.ru/units/shop/?*
-// @match        https://bizmania.ru/person/?*
-// @match        https://bizmania.ru/company/?*
+// @match        https://bizmania.ru/units/shop*
+// @match        https://bizmania.ru/person*
+// @match        https://bizmania.ru/company*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bizmania.ru
 // @homepageURL  https://github.com/newTomas/bizmania/
 // @updateURL    https://raw.githubusercontent.com/newTomas/bizmania/main/bizmania.user.js
