@@ -99,10 +99,10 @@ function company(){
     const searchParams = new URLSearchParams(window.location.search);
     const tab = searchParams.get("tab");
 
-    switch(pathname){
-        case "/person/": person(); break;
-        case "/company/": company(); break;
-        case "/units/shop/": {
+    switch(true){
+        case pathname.startsWith("/person"): person(); break;
+        case pathname.startsWith("/company"): company(); break;
+        case pathname.startsWith("/units/shop"): {
             switch (tab) {
                 case "supply": supply(); break;
                 case "divisions": {
