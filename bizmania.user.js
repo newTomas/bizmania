@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         bizmania
-// @version      2024-06-11
+// @version      2024-10-07
 // @description  Расширение возможностей bizmania
 // @author       newTomas
 // @match        https://bizmania.ru/units/shop*
@@ -13,7 +13,56 @@
 // @grant        none
 // ==/UserScript==
 
-const characters = [["Оптовая торговля", 60], ["Торговля", 450], ["Производство", 500], ["Добыча ископаемых", 350], ["Сельское хозяйство", 150], ["Строительство", 250], ["Энергетика", 60], ["Наука", 750], ["Продукты питания", 75], ["Промтовары", 75], ["Электроника", 75], ["Автотовары", 75], ["Стройматериалы", 75], ["Одежда", 75], ["Предметы роскоши", 75], ["Аптеки", 75], ["Спорттовары", 75], ["Детские товары", 75], ["Рестораны", 75], ["Производство стройматериалов", 90], ["Пищевое производство", 90], ["Легкая промышленность", 90], ["Машиностроение", 90], ["Металлургия", 90], ["Электроника", 90], ["Химия", 90], ["Фармацевтика", 90], ["Спортивные товары", 90], ["Нефтедобыча", 150], ["Добыча руды", 150], ["Карьерная добыча", 150], ["Земледелие", 60], ["Животноводство", 60], ["Теплицы", 60], ["Пищевая промышленность", 75], ["Легкая промышленность", 75], ["Химическая промышленность", 75], ["Электроника", 75], ["Легкое машиностроение", 75], ["Тяжелое машиностроение", 75], ["Металлургия", 75], ["Ювелирное мастерство", 75], ["Добывающая промышленность", 75], ["Деревообработка", 75], ["Строительные материалы", 75], ["Стекольная промышленность", 75], ["Лекарства", 75], ["Спорт", 75]];
+const characters = [["beautysaloon.png",60],
+                    ["lightprod.gif",90],
+                    ["machine.gif",90],
+                    ["steel.gif",90],
+                    ["electronics.gif",90],
+                    ["chemistry.gif",90],
+                    ["foodprod.gif",90],
+                    ["tradefood.png",75],
+                    ["tradegoods.png",75],
+                    ["pharma.trade.gif",75],
+                    ["catering.gif",75],
+                    ["oil.gif",150],
+                    ["mining.gif",150],
+                    ["pit.gif",150],
+                    ["husbandry.gif",60],
+                    ["science.electronics.gif",75],
+                    ["science.food.gif",75],
+                    ["science.light.gif",75],
+                    ["science.chemical.gif",75],
+                    ["science.car.gif",75],
+                    ["science.engineering.gif",75],
+                    ["science.metallurgy.gif",75],
+                    ["science.jewelry.gif",75],
+                    ["constructmaterials.gif",90],
+                    ["pharma.produce.gif",90],
+                    ["sport.produce.blue.gif",90],
+                    ["warehouse.gif",60],
+                    ["production.gif",500],
+                    ["agri.gif",150],
+                    ["trade.gif",450],
+                    ["build.gif",250],
+                    ["energyproduction.gif",150],
+                    ["science.gif",750],
+                    ["servicegreen.gif",150],
+                    ["tradeelectronics.png",75],
+                    ["tradecar.png",75],
+                    ["tradeconstruction.png",75],
+                    ["tradeclothes.png",75],
+                    ["tradeluxury.png",75],
+                    ["sport.trade.blue.gif",75],
+                    ["childtrade.gif",75],
+                    ["digging.gif",350],
+                    ["animal.gif",60],
+                    ["greenhouse2.gif",60],
+                    ["science.extractive.gif",75],
+                    ["science.wood.gif",75],
+                    ["science.building.gif",75],
+                    ["science.glass.gif",75],
+                    ["science.pharma.gif",75],
+                    ["science.sport.gif",75]];
 
 //Вкладка снабжения
 function supply() {
@@ -68,16 +117,18 @@ function division() {
 
 function person() {
     var curlvl = +document.querySelector(".level").innerText;
-    var names = [...document.querySelectorAll(".characters td:nth-child(3n - 1)")].map(e => e.innerText);
+    var imgs = [...document.querySelectorAll(".characters img")].map(e => e.src.split("/").at(-1));
     var lvls = [...document.querySelectorAll(".characters td:nth-child(3n)")].map(e => +e.innerText);
 
     var sum = 0;
 
-    for (let i = 0; i < names.length; i++) {
-        var character = characters.find(e => e[0] == names[i])[1];
+    for (let i = 0; i < imgs.length; i++) {
+        var character = characters.find(e => e[0] == imgs[i])[1];
         sum += character * lvls[i];
-        console.log(names[i], lvls[i], character * lvls[i]);
+        console.log(`${imgs[i]}: ${lvls[i]} * ${character} = ${character * lvls[i]}`);
     }
+
+    console.log("sum", sum);
 
     var unitinfo = document.querySelector(".unitinfo tbody");
     var tr = document.createElement("tr");
