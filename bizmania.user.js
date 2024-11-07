@@ -203,7 +203,6 @@ function factory(){
             break;
         }
         case "units/factory": {
-            if(tab) break;
             factory();
         }
     }
