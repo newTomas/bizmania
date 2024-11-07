@@ -6,6 +6,7 @@
 // @match        https://bizmania.ru/units/shop*
 // @match        https://bizmania.ru/person*
 // @match        https://bizmania.ru/company*
+// @match        https://bizmania.ru/units/factory/?id=*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bizmania.ru
 // @homepageURL  https://github.com/newTomas/bizmania/
 // @updateURL    https://raw.githubusercontent.com/newTomas/bizmania/main/bizmania.user.js
@@ -63,6 +64,21 @@ const characters = [["beautysaloon.png",60],
                     ["science.glass.gif",75],
                     ["science.pharma.gif",75],
                     ["science.sport.gif",75]];
+
+const factoryStaff = {
+    "factory.wood.gif": 300,
+    "factory.car.gif": 600,
+    "factory.consmaterials.gif": 600,
+    "factory.machinery.gif": 1500,
+    "factory.steel.gif": 15,
+    "factory.food.gif": 30,
+    "factory.manufacture.gif": 300,
+    "factory.chemicals.gif": 15,
+    "factory.electronics.gif": 30,
+    "factory.jewelry.gif": 150,
+    "factory.pharma.gif": 30,
+    "factory.sport.gif": 300,
+}
 
 //Вкладка снабжения
 function supply() {
@@ -143,6 +159,27 @@ function company(){
     url.href = `/person/?id=${id}`;
 }
 
+function factory(){
+    if(window.numerics) return;
+
+    const factoryCode = document.querySelector(".unitpageicon").src.split("/").at(-1);
+    const equipmentPerLvl = factoryStaff[factoryCode];
+    if(!equipmentPerLvl) return;
+
+    let totalEquipment = 0;
+    unitMapData.divisions.forEach(e => {
+        const lvl = e.level;
+        let equipment = equipmentPerLvl / 3;
+        if(lvl == 2) equipment *= 2;
+        else if(lvl > 2) {
+            equipment *= 4;
+            equipment += (lvl-3)*equipmentPerLvl;
+        }
+        totalEquipment += equipment;
+    });
+    document.querySelector("#content > table > tbody > tr:nth-child(1) > td:nth-child(2) > table > tbody > tr").innerHTML +=`<td nowrap="true"><h2>(оборудований: ${totalEquipment})</h2></td>`;
+}
+
 (function () {
     'use strict';
 
@@ -163,6 +200,11 @@ function company(){
                 }
                 case "characters": person(); break;
             }
+            break;
+        }
+        case "units/factory": {
+            if(tab) break;
+            factory();
         }
     }
 })();
