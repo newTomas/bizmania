@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         bizmania
-// @version      2024-11-07
+// @version      2024-10-07
 // @description  Расширение возможностей bizmania
 // @author       newTomas
 // @match        https://bizmania.ru/units/shop*
@@ -176,6 +176,7 @@ function factory(){
             equipment += (lvl-3)*equipmentPerLvl;
         }
         totalEquipment += equipment;
+        console.log(`${e.name}\nУровень: ${e.level}\nОборудования: ${equipment}`);
     });
     document.querySelector("#content > table > tbody > tr:nth-child(1) > td:nth-child(2) > table > tbody > tr").innerHTML +=`<td nowrap="true"><h2>(оборудований: ${totalEquipment})</h2></td>`;
 }
