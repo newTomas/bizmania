@@ -15,6 +15,7 @@
 // ==/UserScript==
 
 const characters = [["beautysaloon.png",60],
+                    ["transport.png", 60],
                     ["lightprod.gif",90],
                     ["machine.gif",90],
                     ["steel.gif",90],
