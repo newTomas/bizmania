@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         bizmania
-// @version      2024-11-07
+// @version      2025-02-19
 // @description  Расширение возможностей bizmania
 // @author       newTomas
 // @match        https://bizmania.ru/units/shop*
